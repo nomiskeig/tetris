@@ -35,18 +35,10 @@ class MainIndex {
             ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0",],
             ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0",],
             ["0", "0", "0", "0", "0", "0", "0", "0", "0", "0",],
-
-
-
-
-        ]
-
-
-            ;
-
+            ];
     }
 
-    addPiece(x, y, pieceIndex) {
+    addPieceToIndex(x, y, pieceIndex) {
         this.x = x;
         this.y = y;
         this.pieceIndex = pieceIndex;
@@ -62,20 +54,7 @@ class MainIndex {
         //console.log(this.index);
     }
 
-    createPieces() {
-        for (let i = 0; i <= this.index.length - 1; i++) {
-            for (let j = 0; j <= this.index[i].length - 1; j++) {
-                //this.piece[i][j] = null;
-                //console.log(this.index[j][i]);
-                if (this.index[i][j] == 1) {
-                    this.pieces[i][j] = new Box((i * scale, j *scale));
-                    this.pieces[i][j].show();
-                    //console.log("box erschaffen")
-                }
-            }
-        }
-
-    }
+ 
 }
 
 
