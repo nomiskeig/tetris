@@ -81,7 +81,7 @@ class MainIndex {
                     this.pieces[i][j].show();
                     console.log(this.pieces);
                 }
-
+ert
             }
         }
     }
