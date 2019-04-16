@@ -55,7 +55,7 @@ class MainIndex {
             for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
                 if (this.pieceIndex[j][i] == 1) {
                     this.index[i + this.x][j + this.y] = "1";
-                    console.log("x = " + i + this.x, "y = " + j + this.y)
+                    console.log("x = " +this.x, "y = " +this.y)
                 }
             }
         }
