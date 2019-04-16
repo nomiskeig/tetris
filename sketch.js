@@ -79,17 +79,15 @@ function draw() {
      mainIndex.addPiece(pieces[counter-1].x/scale, pieces[counter-1].y/scale, pieces[counter-1].pieceIndex);
      pieces[counter-1].clearPiece();
      pieces[counter-1].isDone = true;
-     console.log(counter);
      whichPieceOfList = pieceList[Math.floor(Math.random() * pieceList.length)];
      createNewPiece(100, 0, whichPieceOfList);
      
      
    
-    //createNewPiece(100, 0, P3);
+    
 
   }
   mainIndex.createPieces();
-  mainIndex.showPieces();
 }
 
 function createNewPiece(x, y, index) {
