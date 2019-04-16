@@ -50,24 +50,27 @@ class MainIndex {
         this.x = x;
         this.y = y;
         this.pieceIndex = pieceIndex;
-        console.log(this.x, this.y);
+        //console.log(this.x, this.y);
         for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
             for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
-                if (this.pieceIndex[j][i] == 1) this.index[y + this.x][i + this.y] = "1";
+                if (this.pieceIndex[j][i] == 1) {
+                    this.index[i + this.x][j + this.y] = "1";
+                    console.log("x = " + i + this.x, "y = " + j + this.y)
+                }
             }
         }
-        console.log(this.index);
+        //console.log(this.index);
     }
 
     createPieces() {
-        for (let i = 0; i <= this.index.length  -1; i++) {
-            for (let j = 0; j <= this.index[i].length -1; j++) {
+        for (let i = 0; i <= this.index.length - 1; i++) {
+            for (let j = 0; j <= this.index[i].length - 1; j++) {
                 //this.piece[i][j] = null;
                 //console.log(this.index[j][i]);
                 if (this.index[i][j] == 1) {
-                    this.pieces[i][j] = new Box(j, i*scale);
+                    this.pieces[i][j] = new Box((i * scale, j *scale));
                     this.pieces[i][j].show();
-                    console.log("box erschaffen")
+                    //console.log("box erschaffen")
                 }
             }
         }
