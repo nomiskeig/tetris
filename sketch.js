@@ -89,7 +89,7 @@ function draw() {
 
   }
   mainIndex.createPieces();
-  mainIndex.showPieces();
+  //mainIndex.showPieces();
 }
 
 function createNewPiece(x, y, index) {
