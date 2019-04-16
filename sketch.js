@@ -84,11 +84,10 @@ function draw() {
      
      
    
-    //createNewPiece(100, 0, P3);
+    
 
   }
   mainIndex.createPieces();
-  //mainIndex.showPieces();
 }
 
 function createNewPiece(x, y, index) {

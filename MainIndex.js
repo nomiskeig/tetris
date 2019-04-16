@@ -76,20 +76,6 @@ class MainIndex {
         }
 
     }
-
-    // showPieces() {
-    //     for (let i = 0; i <= this.index.length -1 ; i++) {
-    //         for (let j = 0; j <= this.index[i].length -1 ; j++) {
-    //             //this.piece[i][j] = null;
-    //             if (this.pieces[i][j]) {
-    //                 this.pieces[i][j].show();
-    //                 console.log(this.pieces);
-    //             }
-
-    //         }
-    //     }
-    // }
-
 }
 
 
