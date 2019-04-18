@@ -70,14 +70,14 @@ function setup() {
 function draw() {
   background(220);
   floor.show();
-  // for (let i = 0; i <= counter - 1; i++) {
-  //   pieces[i].showPiece();
-  // }
-  pieces[counter-1].showPiece();
+   for (let i = 0; i <= counter - 1; i++) {
+     pieces[i].showPiece();
+   }
+//pieces[counter-1].showPiece();
 
   if (!pieces[counter - 1].checkNoContact(floor) && pieces[counter - 1].isDone == false) {
      mainIndex.addPiece(pieces[counter-1].x/scale, pieces[counter-1].y/scale, pieces[counter-1].pieceIndex);
-     pieces[counter-1].clearPiece();
+     //pieces[counter-1].clearPiece();
      pieces[counter-1].isDone = true;
      whichPieceOfList = pieceList[Math.floor(Math.random() * pieceList.length)];
      createNewPiece(100, 0, whichPieceOfList);
