@@ -30,4 +30,17 @@ class Box {
     this.y += difference;
 
   }
+
+  checkNoCollisionBot() {
+    //console.log(this.x/scale, this.y/scale)
+    return (mainIndex.index[Math.floor(this.y/scale +1)][this.x/scale] == 0);
+  }
+
+  checkNoCollisionLeft(other) {
+    return (this.x > other.x + other.w)
+  }
+
+  checkNoCollisionRight(other) {
+    return (this.x + this.w < other.x)
+  }
 }

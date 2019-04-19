@@ -75,7 +75,7 @@ function draw() {
   //  }
   pieces[counter-1].showPiece();
 
-  if (!pieces[counter - 1].checkNoContact(floor) && pieces[counter - 1].isDone == false) {
+  if ((!pieces[counter-1].checkNoCollisionBot() || !pieces[counter-1].checkNoContact(floor))  && pieces[counter - 1].isDone == false) {
      mainIndex.addPiece(pieces[counter-1].x/scale, pieces[counter-1].y/scale, pieces[counter-1].pieceIndex);
      mainIndex.createPieces();
      pieces[counter-1].clearPiece();
@@ -100,7 +100,8 @@ function createNewPiece(x, y, index) {
 
 function movePieces() {
   for (let i = 0; i <= counter - 1; i++) {
-    if (pieces[i].checkNoContact(floor)) pieces[i].movePiece();
+    if (pieces[i].checkNoContact(floor) && pieces[i].checkNoCollisionBot()) pieces[i].movePiece();
+    
 
 
   }

@@ -180,4 +180,18 @@ class Piece {
       }
     }
   }
+
+  checkNoCollisionBot() {
+    let noCollision = true;
+    for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
+      for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
+        if (this.piece[i][j]) {
+        //console.log("wird gecheckt");
+        if (!this.piece[i][j].checkNoCollisionBot()) noCollision = false;
+        }
+      }
+    }
+    //console.log("noCollision = " + noCollision)
+    return noCollision;
+  }
 }

@@ -46,11 +46,11 @@ class MainIndex {
             for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
                 if (this.pieceIndex[i][j] == 1) {
                     this.index[i + this.y][j + this.x] = 1;
-                    console.log("i = " + i, "j = " + j)
+                    //console.log("i = " + i, "j = " + j)
                 }
             }
         }
-        console.log(this.index);
+       // console.log(this.index);
     }
 
     createPieces() {
@@ -58,7 +58,7 @@ class MainIndex {
             for (let j = 0; j <= this.index[i].length - 1; j++) {
                 if (this.index[i][j] == 1) {
                     this.pieces[i][j] = new Box(j * scale, i * scale);
-                    console.log(this.pieces[i][j].x, this.pieces[i][j].y);
+                   // console.log(this.pieces[i][j].x, this.pieces[i][j].y);
                 }
             }
         }
@@ -69,7 +69,7 @@ class MainIndex {
         for (let i = 0; i <= this.pieces.length - 1; i++) {
             for (let j = 0; j <= this.pieces[i].length - 1; j++) {
                 if (this.pieces[i][j]) {
-                    console.log("sollte angezeigt werden");
+                    //console.log("sollte angezeigt werden");
                     this.pieces[i][j].show();
                 }
             }
