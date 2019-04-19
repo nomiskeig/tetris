@@ -141,18 +141,32 @@ class Piece {
     this.x -= scale;
   }
 
-  movePieceToBottom(other) {
-    this.heigthDifference = other.y - (this.y + this.h);
-    this.y += this.heigthDifference;
-    for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
-      for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
-        if (this.piece[i][j]) {
-          this.piece[i][j].moveBoxToBottom(this.heigthDifference);
-          //this.piece[i][j].show();
+  movePieceToBottom() {
+
+    let distance = ["0", "0", "0"];
+    let minDistance = 0;
+    let differenceTopToPiece = Math.floor(this.y/scale) + this.getPieceHeight()/scale;
+    console.log("differenceTopToPiece = " + differenceTopToPiece)
+    for (let i = 0; i <= 2; i++) {
+      for (let j = 0; j <= (28 - differenceTopToPiece); j++) {
+        if (mainIndex.index[this.x / scale + i][differenceTopToPiece + j] == 0) {
+          distance[i]++;
+          console.log("Distanz = " + distance[i]);
         }
       }
     }
+    minDistance = Math.min(...distance);
+    console.log("minDistance= " + minDistance)
+    for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
+      for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
+        if (this.piece[i][j]) {
+          console.log("gemovt");
+          this.piece[i][j].moveBoxToBottom(minDistance*scale);
 
+        }
+      }
+
+    }
   }
 
 
@@ -187,8 +201,8 @@ class Piece {
     for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
       for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
         if (this.piece[i][j]) {
-        //console.log("wird gecheckt");
-        if (!this.piece[i][j].checkNoCollisionBot()) noCollision = false;
+          //console.log("wird gecheckt");
+          if (!this.piece[i][j].checkNoCollisionBot()) noCollision = false;
         }
       }
     }
@@ -201,8 +215,8 @@ class Piece {
     for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
       for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
         if (this.piece[i][j]) {
-        //console.log("wird gecheckt");
-        if (!this.piece[i][j].checkNoCollisionLeft()) noCollision = false;
+          //console.log("wird gecheckt");
+          if (!this.piece[i][j].checkNoCollisionLeft()) noCollision = false;
         }
       }
     }
@@ -215,8 +229,8 @@ class Piece {
     for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
       for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
         if (this.piece[i][j]) {
-        //console.log("wird gecheckt");
-        if (!this.piece[i][j].checkNoCollisionRight()) noCollision = false;
+          //console.log("wird gecheckt");
+          if (!this.piece[i][j].checkNoCollisionRight()) noCollision = false;
         }
       }
     }
