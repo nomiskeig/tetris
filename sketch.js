@@ -109,8 +109,8 @@ function movePieces() {
 
 function keyPressed() {
   if (keyCode === UP_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].rotatePiece();
-  if (keyCode === RIGHT_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].movePieceRight();
-  if (keyCode === LEFT_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].movePieceLeft();
+  if (keyCode === RIGHT_ARROW && pieces[counter - 1].checkNoContact(floor) && pieces[counter-1].checkNoCollisionRight()) pieces[counter - 1].movePieceRight();
+  if (keyCode === LEFT_ARROW && pieces[counter - 1].checkNoContact(floor) && pieces[counter-1].checkNoCollisionLeft()) pieces[counter - 1].movePieceLeft();
   if (keyCode === DOWN_ARROW  && pieces[counter -1].checkNoContact(floor)) pieces[counter -1].movePieceToBottom(floor);
 
 

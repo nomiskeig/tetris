@@ -36,11 +36,11 @@ class Box {
     return (mainIndex.index[Math.floor(this.y/scale +1)][this.x/scale] == 0);
   }
 
-  checkNoCollisionLeft(other) {
-    return (this.x > other.x + other.w)
+  checkNoCollisionLeft() {
+    return (mainIndex.index[Math.floor(this.y/scale)][this.x/scale -1] == 0)
   }
 
-  checkNoCollisionRight(other) {
-    return (this.x + this.w < other.x)
+  checkNoCollisionRight() {
+    return (mainIndex.index[Math.floor(this.y/scale)][this.x/scale +1] == 0)
   }
 }
