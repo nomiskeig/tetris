@@ -1,8 +1,9 @@
 class Box {
     
-  constructor(x, y, ) {
+  constructor(x, y, color) {
     this.x = x;
     this.y = y;
+    this.color = color;
   
 
 
@@ -10,8 +11,9 @@ class Box {
   }
 
   show() {
-  
+    fill(this.color);
     rect(this.x, this.y, scale, scale);
+    //fill(0);
   }
 
   moveBoxDown() {

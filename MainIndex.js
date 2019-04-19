@@ -38,9 +38,10 @@ class MainIndex {
         ];
     }
 
-    addPiece(x, y, pieceIndex) {
+    addPiece(x, y, pieceIndex, color) {
         this.x = x;
         this.y = y;
+        this.color = color;
         this.pieceIndex = pieceIndex;
         for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
             for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
@@ -56,8 +57,8 @@ class MainIndex {
     createPieces() {
         for (let i = 0; i <= this.index.length - 1; i++) {
             for (let j = 0; j <= this.index[i].length - 1; j++) {
-                if (this.index[i][j] == 1) {
-                    this.pieces[i][j] = new Box(j * scale, i * scale);
+                if (this.index[i][j] == 1  && !this.pieces[i][j]) {
+                    this.pieces[i][j] = new Box(j * scale, i * scale, this.color);
                    // console.log(this.pieces[i][j].x, this.pieces[i][j].y);
                 }
             }

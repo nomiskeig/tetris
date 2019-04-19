@@ -1,11 +1,12 @@
 class Piece {
 
-  constructor(x, y, pieceIndex) {
+  constructor(x, y, pieceIndex, color) {
     this.x = x;
     this.y = y;
     this.h = 0;
     this.temph = 0;
     this.isDone = false;
+    this.color = color;
     this.pieceIndex = pieceIndex;
     this.heigthDifference = 0;
     this.piece = [
