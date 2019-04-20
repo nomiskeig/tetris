@@ -142,9 +142,27 @@ class Piece {
     this.x -= scale;
   }
 
+  // movePieceToBottom() {
+
+  //   while (this.checkNoContact(floor) && this.checkNoCollisionBot()) {
+  //     for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
+  //       for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
+  //         if (this.piece[i][j]) {
+  //           console.log("gemovt");
+  //           this.piece[i][j].moveBoxToBottom(scale);
+  
+  //         }
+  //       }
+  
+  //     }
+  //     this.y += scale;
+
+  //   }
+  // }
+
   movePieceToBottom() {
 
-    while (this.checkNoContact(floor) && this.checkNoCollisionBot()) {
+    if (this.checkNoContact(floor) && this.checkNoCollisionBot()) {
       for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
         for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
           if (this.piece[i][j]) {
