@@ -61,7 +61,7 @@ function setup() {
   const yellow = color(255, 255, 0);
   const green = color(0, 153, 0);
   const purple = color(153, 0, 255);
-  const red = color(0, 0, 255);
+  const red = color(255, 0, 0);
 
   colors = [purple, green, red, yellow, orange, darkblue, lightblue]
   createCanvas(200, 600);
@@ -69,8 +69,9 @@ function setup() {
   mainIndex = new MainIndex();
 
 
-  whichPiece = Math.floor(Math.random() * pieceList.length);
+  whichPiece = getRandomIntInclusive(0,6)
   createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
+  console.log(pieceList[whichPiece], colors[whichPiece])
 
   setInterval(movePieces, 200)
 
@@ -98,8 +99,10 @@ function draw() {
     mainIndex.createPieces();
     pieces[counter - 1].clearPiece();
     pieces[counter - 1].isDone = true;
-    whichPiece = Math.floor(Math.random() * pieceList.length);
+    whichPiece = getRandomIntInclusive(0,6)
     createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
+    console.log(pieceList[whichPiece], colors[whichPiece])
+
 
 
 
@@ -132,4 +135,10 @@ function keyPressed() {
   if (keyCode === DOWN_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].movePieceToBottom();
 
 
+}
+
+function getRandomIntInclusive(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min +1)) + min; 
 }
