@@ -51,15 +51,15 @@ class MainIndex {
                 }
             }
         }
-       // console.log(this.index);
+        // console.log(this.index);
     }
 
     createPieces() {
         for (let i = 0; i <= this.index.length - 1; i++) {
             for (let j = 0; j <= this.index[i].length - 1; j++) {
-                if (this.index[i][j] == 1  && !this.pieces[i][j]) {
+                if (this.index[i][j] == 1 && !this.pieces[i][j]) {
                     this.pieces[i][j] = new Box(j * scale, i * scale, this.color);
-                   // console.log(this.pieces[i][j].x, this.pieces[i][j].y);
+                    // console.log(this.pieces[i][j].x, this.pieces[i][j].y);
                 }
             }
         }
@@ -76,6 +76,18 @@ class MainIndex {
             }
         }
 
+    }
+
+    detectLines() {
+        
+    }
+
+    removeLines() {
+        let 
+        for (let i = 0; i <= this.pieces.length - 1; i++) {
+            for (let j = 0; j <= this.pieces[i].length - 1; j++) {
+            }
+        }
     }
 }
 
