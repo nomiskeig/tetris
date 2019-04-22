@@ -107,14 +107,14 @@ class MainIndex {
                 this.index[line][j] = 0;
                 this.pieces[line][j] = null;
             }
-        console.log("reihe sollte entfernt sein")
+        //console.log("reihe sollte entfernt sein")
         this.moveLines(line)
     }
 
     moveLines(line) {
         for (let i = 0; i <= line -1; i++) {
             for (let j = 0; j <= 9; j++) {
-                console.log(line-i, j)
+               // console.log(line-i, j)
                 this.index[line-i][j] = this.index[line-i-1][j];  
                 //if (this.pieces[i][j]) this.pieces[i][j].y += scale;
                 if (this.pieces[line-i-1][j]) {
@@ -126,7 +126,8 @@ class MainIndex {
             }
             this.index[0][i] = 0;           
         }
-        console.log(this.index)
+        //console.log(this.index)
+        points += 100;
     }
 }
 

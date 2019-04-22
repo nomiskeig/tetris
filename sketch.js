@@ -52,6 +52,8 @@ pieceList = [P1, P2, P3, P4, P5, P6, P7]
 
 let counter = 0;
 let pieces = [];
+let points = 0;
+let pointsDive;
 
 
 function setup() {
@@ -67,6 +69,8 @@ function setup() {
   createCanvas(200, 600);
   floor = new Floor();
   mainIndex = new MainIndex();
+  pointsDiv = createDiv(points);
+  pointsDiv.style("font-size","72pt")
 
 
   whichPiece = getRandomIntInclusive(0,6)
@@ -112,7 +116,10 @@ function draw() {
   }
   mainIndex.showPieces();
   
+  
   if (keyIsDown(40)) pieces[counter-1].movePieceToBottom();
+  pointsDiv.html(points);
+
 }
 
 function createNewPiece(x, y, index, color) {
