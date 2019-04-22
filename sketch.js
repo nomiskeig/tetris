@@ -66,11 +66,13 @@ function setup() {
   const red = color(255, 0, 0);
 
   colors = [purple, green, red, yellow, orange, darkblue, lightblue]
-  createCanvas(200, 600);
+  var canvas = createCanvas(200, 600);
+  canvas.parent("sketchDiv")
+
   floor = new Floor();
   mainIndex = new MainIndex();
-  pointsDiv = createDiv(points);
-  pointsDiv.style("font-size","72pt")
+  //pointsDiv = createDiv(points);
+  //pointsDiv.style("font-size","72pt")
 
 
   whichPiece = getRandomIntInclusive(0,6)
@@ -118,7 +120,8 @@ function draw() {
   
   
   if (keyIsDown(40)) pieces[counter-1].movePieceToBottom();
-  pointsDiv.html(points);
+  //pointsDiv.html(points);
+  document.getElementById("pointsDiv").innerHTML = "Punkte: " + points;
 
 }
 
