@@ -166,7 +166,7 @@ class Piece {
       for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
         for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
           if (this.piece[i][j]) {
-            console.log("gemovt");
+            //console.log("gemovt");
             this.piece[i][j].moveBoxToBottom(scale);
   
           }
@@ -229,7 +229,7 @@ class Piece {
         }
       }
     }
-    console.log("noCollision Links = " + noCollision)
+    //console.log("noCollision Links = " + noCollision)
     return noCollision;
   }
 
@@ -243,7 +243,7 @@ class Piece {
         }
       }
     }
-    console.log("noCollision Rechts = " + noCollision)
+    //console.log("noCollision Rechts = " + noCollision)
     return noCollision;
   }
 }

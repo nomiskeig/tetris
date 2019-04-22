@@ -71,7 +71,7 @@ function setup() {
 
   whichPiece = getRandomIntInclusive(0,6)
   createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
-  console.log(pieceList[whichPiece], colors[whichPiece])
+  //console.log(pieceList[whichPiece], colors[whichPiece])
 
   setInterval(movePieces, 200)
 
@@ -101,7 +101,8 @@ function draw() {
     pieces[counter - 1].isDone = true;
     whichPiece = getRandomIntInclusive(0,6)
     createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
-    console.log(pieceList[whichPiece], colors[whichPiece])
+    //console.log(pieceList[whichPiece], colors[whichPiece])
+    mainIndex.detectLines();
 
 
 
@@ -110,6 +111,7 @@ function draw() {
 
   }
   mainIndex.showPieces();
+  
   if (keyIsDown(40)) pieces[counter-1].movePieceToBottom();
 }
 
