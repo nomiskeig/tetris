@@ -47,7 +47,8 @@ const emptyPiece = [
 ];
 
 
-pieceList = [P1, P2, P3, P4, P5, P6, P7]
+pieceList = [P1, P2, P3, P4, P5, P6, P7];
+nextPieces = ["0", "0", "0", "0"];
 
 
 let counter = 0;
@@ -75,9 +76,11 @@ var s = function (sketch) {
 
 
 
-    whichPiece = getRandomIntInclusive(0, 6)
-    createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
-    //console.log(pieceList[whichPiece], colors[whichPiece])
+    updateNextPieces();
+    updateNextPieces();
+    updateNextPieces();
+    updateNextPieces();
+    createNewPiece(100, 0, pieceList[nextPieces[3]], colors[nextPieces[3]]);
 
     setInterval(movePieces, 200)
 
@@ -95,9 +98,6 @@ var s = function (sketch) {
     const red = sketch.color(0, 0, 255);
     sketch.background(220);
     game.floor.show();
-    //  for (let i = 0; i <= counter - 1; i++) {
-    //    pieces[i].showPiece();
-    //  }
     pieces[counter - 1].showPiece();
 
     if ((!pieces[counter - 1].checkNoCollisionBot() || !pieces[counter - 1].checkNoContact(sketch.floor)) && pieces[counter - 1].isDone == false) {
@@ -105,9 +105,8 @@ var s = function (sketch) {
       mainIndex.createPieces();
       pieces[counter - 1].clearPiece();
       pieces[counter - 1].isDone = true;
-      whichPiece = getRandomIntInclusive(0, 6)
-      createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
-      //console.log(pieceList[whichPiece], colors[whichPiece])
+      updateNextPieces();
+      createNewPiece(100, 0, pieceList[nextPieces[3]], colors[nextPieces[3]]);
       mainIndex.detectLines();
 
 
@@ -156,4 +155,11 @@ function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function updateNextPieces() {
+  nextPieces[3] = nextPieces[2];
+  nextPieces[2] = nextPieces[1];
+  nextPieces[1] = nextPieces[0];
+  nextPieces[0] = getRandomIntInclusive(0,6);
 }

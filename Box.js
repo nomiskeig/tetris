@@ -16,6 +16,8 @@ class Box {
     //fill(0);
   }
 
+  
+
   moveBoxDown() {
     this.y += moveSpeed;
   }
