@@ -3,13 +3,13 @@ class Floor {
 
     this.x = 0;
     this.y = 560;
-    this.w = width;
-    this.h = height - this.y;
+    this.w = game.width;
+    this.h = game.height - this.y;
   }
 
   show() {
-    fill(0);
-    rect(this.x, this.y, this.w, this.h);
-    fill(255);
+    game.fill(0);
+    game.rect(this.x, this.y, this.w, this.h);
+    game.fill(255);
   }
 }

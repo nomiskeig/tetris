@@ -11,8 +11,8 @@ class Box {
   }
 
   show() {
-    fill(this.color);
-    rect(this.x, this.y, scale, scale);
+    game.fill(this.color);
+    game.rect(this.x, this.y, scale, scale);
     //fill(0);
   }
 

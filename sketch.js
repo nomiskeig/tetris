@@ -55,75 +55,77 @@ let pieces = [];
 let points = 0;
 let pointsDive;
 
+var s = function (sketch) {
 
-function setup() {
-  const lightblue = color(51, 204, 255);
-  const darkblue = color(0, 0, 255);
-  const orange = color(255, 102, 0);
-  const yellow = color(255, 255, 0);
-  const green = color(0, 153, 0);
-  const purple = color(153, 0, 255);
-  const red = color(255, 0, 0);
+  sketch.setup = function () {
+    const lightblue = sketch.color(51, 204, 255);
+    const darkblue = sketch.color(0, 0, 255);
+    const orange = sketch.color(255, 102, 0);
+    const yellow = sketch.color(255, 255, 0);
+    const green = sketch.color(0, 153, 0);
+    const purple = sketch.color(153, 0, 255);
+    const red = sketch.color(255, 0, 0);
 
-  colors = [purple, green, red, yellow, orange, darkblue, lightblue]
-  var canvas = createCanvas(200, 600);
-  canvas.parent("sketchDiv")
+    colors = [purple, green, red, yellow, orange, darkblue, lightblue]
+    var canvas = sketch.createCanvas(200, 600);
+    canvas.parent("sketchDiv")
 
-  floor = new Floor();
-  mainIndex = new MainIndex();
-  //pointsDiv = createDiv(points);
-  //pointsDiv.style("font-size","72pt")
-
-
-  whichPiece = getRandomIntInclusive(0,6)
-  createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
-  //console.log(pieceList[whichPiece], colors[whichPiece])
-
-  setInterval(movePieces, 200)
+    this.floor = new Floor();
+    mainIndex = new MainIndex();
 
 
 
-}
-
-function draw() {
-  const lightblue = color(51, 204, 255);
-  const darkblue = color(0, 0, 255);
-  const orange = color(255, 102, 0);
-  const yellow = color(255, 255, 0);
-  const green = color(0, 153, 0);
-  const purple = color(153, 0, 255);
-  const red = color(0, 0, 255);
-  background(220);
-  floor.show();
-  //  for (let i = 0; i <= counter - 1; i++) {
-  //    pieces[i].showPiece();
-  //  }
-  pieces[counter - 1].showPiece();
-
-  if ((!pieces[counter - 1].checkNoCollisionBot() || !pieces[counter - 1].checkNoContact(floor)) && pieces[counter - 1].isDone == false) {
-    mainIndex.addPiece(pieces[counter - 1].x / scale, Math.floor(pieces[counter - 1].y / scale), pieces[counter - 1].pieceIndex, pieces[counter - 1].color);
-    mainIndex.createPieces();
-    pieces[counter - 1].clearPiece();
-    pieces[counter - 1].isDone = true;
-    whichPiece = getRandomIntInclusive(0,6)
+    whichPiece = getRandomIntInclusive(0, 6)
     createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
     //console.log(pieceList[whichPiece], colors[whichPiece])
-    mainIndex.detectLines();
 
-
-
+    setInterval(movePieces, 200)
 
 
 
   }
-  mainIndex.showPieces();
-  
-  
-  if (keyIsDown(40)) pieces[counter-1].movePieceToBottom();
-  //pointsDiv.html(points);
-  document.getElementById("pointsDiv").innerHTML = "Punkte: " + points;
 
+  sketch.draw = function () {
+    const lightblue = sketch.color(51, 204, 255);
+    const darkblue = sketch.color(0, 0, 255);
+    const orange = sketch.color(255, 102, 0);
+    const yellow = sketch.color(255, 255, 0);
+    const green = sketch.color(0, 153, 0);
+    const purple = sketch.color(153, 0, 255);
+    const red = sketch.color(0, 0, 255);
+    sketch.background(220);
+    game.floor.show();
+    //  for (let i = 0; i <= counter - 1; i++) {
+    //    pieces[i].showPiece();
+    //  }
+    pieces[counter - 1].showPiece();
+
+    if ((!pieces[counter - 1].checkNoCollisionBot() || !pieces[counter - 1].checkNoContact(sketch.floor)) && pieces[counter - 1].isDone == false) {
+      mainIndex.addPiece(pieces[counter - 1].x / scale, Math.floor(pieces[counter - 1].y / scale), pieces[counter - 1].pieceIndex, pieces[counter - 1].color);
+      mainIndex.createPieces();
+      pieces[counter - 1].clearPiece();
+      pieces[counter - 1].isDone = true;
+      whichPiece = getRandomIntInclusive(0, 6)
+      createNewPiece(100, 0, pieceList[whichPiece], colors[whichPiece]);
+      //console.log(pieceList[whichPiece], colors[whichPiece])
+      mainIndex.detectLines();
+
+
+
+
+
+
+    }
+    mainIndex.showPieces();
+
+
+    if (sketch.keyIsDown(40)) pieces[counter - 1].movePieceToBottom();
+    //pointsDiv.html(points);
+    document.getElementById("pointsDiv").innerHTML = "Punkte: " + points;
+
+  }
 }
+var game = new p5(s, "sketchDiv");
 
 function createNewPiece(x, y, index, color) {
   pieces[counter] = new Piece(x, y, index, color);
@@ -134,7 +136,7 @@ function createNewPiece(x, y, index, color) {
 
 function movePieces() {
   for (let i = 0; i <= counter - 1; i++) {
-    if (pieces[i].checkNoContact(floor) && pieces[i].checkNoCollisionBot()) pieces[i].movePiece();
+    if (pieces[i].checkNoContact(game.floor) && pieces[i].checkNoCollisionBot()) pieces[i].movePiece();
 
 
 
@@ -142,9 +144,9 @@ function movePieces() {
 }
 
 function keyPressed() {
-  if (keyCode === UP_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].rotatePiece();
-  if (keyCode === RIGHT_ARROW && pieces[counter - 1].checkNoContact(floor) && pieces[counter - 1].checkNoCollisionRight()) pieces[counter - 1].movePieceRight();
-  if (keyCode === LEFT_ARROW && pieces[counter - 1].checkNoContact(floor) && pieces[counter - 1].checkNoCollisionLeft()) pieces[counter - 1].movePieceLeft();
+  if (game.keyCode === game.UP_ARROW && pieces[counter - 1].checkNoContact(game.floor)) pieces[counter - 1].rotatePiece();
+  if (game.keyCode === game.RIGHT_ARROW && pieces[counter - 1].checkNoContact(game.floor) && pieces[counter - 1].checkNoCollisionRight()) pieces[counter - 1].movePieceRight();
+  if (game.keyCode === game.LEFT_ARROW && pieces[counter - 1].checkNoContact(game.floor) && pieces[counter - 1].checkNoCollisionLeft()) pieces[counter - 1].movePieceLeft();
   //if (keyCode === DOWN_ARROW && pieces[counter - 1].checkNoContact(floor)) pieces[counter - 1].movePieceToBottom();
 
 
@@ -153,5 +155,5 @@ function keyPressed() {
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min +1)) + min; 
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }

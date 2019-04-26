@@ -162,7 +162,7 @@ class Piece {
 
   movePieceToBottom() {
 
-    if (this.checkNoContact(floor) && this.checkNoCollisionBot()) {
+    if (this.checkNoContact(game.floor) && this.checkNoCollisionBot()) {
       for (let i = 0; i <= this.pieceIndex.length - 1; i++) {
         for (let j = 0; j <= this.pieceIndex[i].length - 1; j++) {
           if (this.piece[i][j]) {
